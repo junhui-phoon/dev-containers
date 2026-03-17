@@ -1,2 +1,2 @@
 # dev-containers
-Collection of Podman/Docker containers for local development
+Collection of Podman/Docker compose files for local development
