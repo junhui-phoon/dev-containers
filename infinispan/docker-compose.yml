@@ -1,0 +1,16 @@
+services:
+  infinispan:
+    image: quay.io/infinispan/server:latest
+    container_name: infinispan
+    restart: unless-stopped
+    environment:
+      USER: admin
+      PASS: secret123
+      JAVA_OPTIONS: "-Dinfinispan.bind.address=0.0.0.0"
+    ports:
+      - "11222:11222"
+    volumes:
+      - infinispan_data:/opt/infinispan/server/data
+      - ./infinispan-conf.xml:/opt/infinispan/server/conf/infinispan.xml:ro
+volumes:
+  infinispan_data:

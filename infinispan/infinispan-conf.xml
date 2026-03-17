@@ -1,0 +1,25 @@
+<infinispan xmlns="urn:infinispan:config:16.1.2">
+  <cache-container name="default" statistics="true">
+    <transport cluster="dev-cluster"/>
+  </cache-container>
+  <server xmlns="urn:infinispan:server:16.1.2">
+    <interfaces>
+      <interface name="public">
+        <any-address/>
+      </interface>
+    </interfaces>
+    <socket-bindings default-interface="public" port-offset="0">
+      <socket-binding name="default" port="11222"/>
+    </socket-bindings>
+    <security>
+      <credential-stores/>
+      <security-realms/>
+    </security>
+    <endpoints> <!-- No security-realm attribute = no authentication -->
+      <endpoint socket-binding="default">
+        <hotrod-connector/>
+        <rest-connector/>
+      </endpoint>
+    </endpoints>
+  </server>
+</infinispan>
